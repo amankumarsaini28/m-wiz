@@ -12,7 +12,9 @@ import { StepAComponent } from './wizard-demo-usecase/step-a.component';
       <a>{{wizStore?.value?.wizInfo?.stepFactory[stepKey]?.label}}</a>
     </li>
   </ul>
+
   <ng-template stepHost></ng-template>
+
   <button *ngIf="enableBack">Back</button>
   <button *ngIf="enableSave">Save</button>
   <button *ngIf="enableNext">Next</button>
@@ -58,6 +60,7 @@ export class WizRootComponent implements OnInit {
 
   loadStep(stepKey: string) {
     const { component: StepComponent } = this.wizStore.value.wizInfo.stepFactory[stepKey];
+
     const stepInstanceFactory = this.cfResolver.resolveComponentFactory(StepComponent);
     this.wizRootContainer.viewContainerRef.clear();
     this.stepInstance = this.wizRootContainer.viewContainerRef.createComponent(stepInstanceFactory);
