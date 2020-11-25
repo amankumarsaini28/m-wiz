@@ -1,7 +1,10 @@
+import { IWizStepTemplate } from './i-wiz-step-template';
+
 export interface IWizInfo {
   stepSequence: string[];
   stepFactory: { [key: string]: IStepInfo };
-  initalStep: string;
+  currentStep: string;
+  currentStepIndex?: number;
 }
 
 export interface IStepInfo {

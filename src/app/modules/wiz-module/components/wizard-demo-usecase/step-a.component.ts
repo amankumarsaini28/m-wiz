@@ -3,18 +3,24 @@ import { IWizOnNext, IWizOnPrevious, IWizOnSave } from '../../entity';
 
 
 @Component({
-  template: `<h1>Step A</h1>`,
+  template: `<p>Step A content</p><br/><input type="checkbox" [(ngModel)]="isChecked"/> check me before going to next`,
   selector: 'step-a'
 })
-export class StepAComponent implements IWizOnNext, IWizOnPrevious {
+export class StepAComponent implements IWizOnNext {
+
+  isChecked: boolean;
+
   constructor() { }
 
-  onStepLoad() { }
+  onStepLoad() {
+    console.log('on Step load called for A');
+  }
 
-  async onNext() { }
-
-  async onPrevious() {
-
+  async onNext() {
+    console.warn(this.isChecked);
+    if (!this.isChecked) {
+      throw new Error('checkbox not selected');
+    }
   }
 
 }

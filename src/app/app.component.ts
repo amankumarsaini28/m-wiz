@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IWizInfo } from './modules/wiz-module/entity';
 
 import { StepAComponent } from './modules/wiz-module/components/wizard-demo-usecase/step-a.component';
+import { StepBComponent } from './modules/wiz-module/components/wizard-demo-usecase/step-b.component';
 
 @Component({
   selector: 'app-root',
@@ -18,12 +19,12 @@ export class AppComponent {
         subLabel: 'help text'
       },
       'step-b': {
-        component: StepAComponent,
+        component: StepBComponent,
         label: 'Step B',
         subLabel: 'help text'
       }
     },
-    initalStep: 'step-a'
+    currentStep: 'step-a'
   };
   title = 'm-wiz';
 }
